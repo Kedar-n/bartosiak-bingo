@@ -134,4 +134,6 @@ generate();
 refresh.addEventListener('click', ()=> {
   put_in();
   back();
+  notespan.textContent='';
+  pickArray = [];
 });
