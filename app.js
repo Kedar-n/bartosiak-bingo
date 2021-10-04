@@ -101,6 +101,7 @@ function back(){
   for(let i=0; i < ArrayB.length; i++) {
   Array.push(ArrayB[i]);
   }
+  ArrayB=[];
 }
 
 function klik() {
@@ -109,7 +110,7 @@ function klik() {
       r = getRandom(0, templateArray.length);
       let pick = tile[i].children[0].textContent;
       pickArray.push(pick);
-      notespan.textContent = templateArray[r] + templateArray[r]+pickArray;
+      notespan.textContent = templateArray[r]+pickArray;
     });
   }
 }
@@ -118,22 +119,17 @@ function generate() {
   button.addEventListener('click', () => {
     console.log('kliknąłeś na przycisk');
     return (notespan.textContent = `Najpilniejsze wyzwanie, jakiemu musi sprostać Rzeczypospolita w obecnym klimacie geopolitycznym to redefinicja pojęcia ${pickArray[0]}. W swoich analizach dla "Strategy&Future" niejednokrotnie wykazywałem znacznie, jakie w architekturze mentalnej tego terminu mają zarówno ${pickArray[1]}, jak i ${pickArray[2]}. Tymczasem aparat responsywny państwa polskiego skupiał się dotąd na reliktach zmurszałych koncepcji takich jak ${pickArray[3]}, prowadząc nieuchronnie do utraty sprawczości w regionie i zdania się na łaskę tego, co w polskiej martyrologii dziejowej zwykliśmy definiować kryptonimem ${pickArray[4]}.`);
-  })} /*else {
-    button.addEventListener('click', () => {
-      console.log('kliknąłeś na przycisk');
-    return notespan.textContent = "błąd";
-    })
-  }
-}*/
+    }
+  )
+}
 
 put_in();
-back();
 klik();
 generate();
 
 refresh.addEventListener('click', ()=> {
   put_in();
-  back();
   notespan.textContent='';
   pickArray = [];
+  back();
 });
