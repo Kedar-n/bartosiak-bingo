@@ -109,7 +109,7 @@ function klik() {
       r = getRandom(0, templateArray.length);
       let pick = tile[i].children[0].textContent;
       pickArray.push(pick);
-      notespan.textContent = templateArray[r] + tile[i].children[0].textContent;
+      notespan.textContent = templateArray[r] + templateArray[r]+pickArray;
     });
   }
 }
