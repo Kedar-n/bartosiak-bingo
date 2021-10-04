@@ -73,12 +73,14 @@ let templateArray = [
   `Doktor Jacek Bartosiak wyjaśni `
 ];
 
+let ArrayB = [];
 let pickArray = [];
 
 const spans = [...document.querySelectorAll('.span')];
 const tile = [...document.querySelectorAll('.tile')];
 const notespan = document.querySelector('#notespan');
 const button = document.querySelector('#button');
+const refresh = document.querySelector('#refresh');
 
 function getRandom(min, max) {
   min = Math.ceil(min);
@@ -90,7 +92,14 @@ function put_in() {
   for (let i = 0; i < spans.length; i++) {
     r = getRandom(0, Array.length);
     spans[i].textContent = Array[r];
-    Array.splice(r, 1); //usuwa wykorzystany string z tablicy, aby uniknąć powtórzeń
+    ArrayB.push(Array[r]);
+    Array.splice(r, 1); //usuwa wykorzystany string z tablicy, aby uniknąć powtórzeń 
+  }
+}
+
+function back(){
+  for(let i=0; i < ArrayB.length; i++) {
+  Array.push(ArrayB[i]);
   }
 }
 
@@ -118,21 +127,11 @@ function generate() {
 }*/
 
 put_in();
+back();
 klik();
 generate();
 
-
-/* 
-TO DO:
-* zapobiec wybraniu więcej niż raz tego samego elementu z matrycy
-* zapobiec uruchomieniu generat() w przypadku wybrania mniej niż 5 elementów
-* 
-
-(schowek)
-
-PLAN: 
-* kategorie elementów Array: 
-1. person (p)
-2. geo (g)
-3. event (e)
-*/
+refresh.addEventListener('click', ()=> {
+  put_in();
+  back();
+});
